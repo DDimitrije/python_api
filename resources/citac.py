@@ -11,7 +11,7 @@ blp = Blueprint("Citacs", "citacs", description="Operations on citacs")
 
 
 
-@blp.route("/citac/<string:trka_id>/citac")
+@blp.route("/citac/<int:trka_id>/citac")
 #class TrkacsInManifestacija(MethodView):
 class Citacs(MethodView):
     @blp.response(200, CitacSchema(many=True))
@@ -65,7 +65,7 @@ class CitacList(MethodView):
     def get(self):
         return CitacModel.query.all()
 
-@blp.route("/trka/<string:trka_id>/android/<string:android_id>")
+@blp.route("/trka/<int:trka_id>/android/<int:android_id>")
 class LinkTagsToItem(MethodView):
     @blp.response(201, CitacSchema)
     def post(self, trka_id, citac_id):
@@ -83,7 +83,7 @@ class LinkTagsToItem(MethodView):
         return citac
 
 
-@blp.route("/citac/<string:citac_id>")
+@blp.route("/citac/<int:citac_id>")
 class Android(MethodView):
     @blp.response(200, CitacSchema)
     def get(self, citac_id):
@@ -130,7 +130,7 @@ class Android(MethodView):
         return {"message": "Citac deleted."}, 200
 
 
-@blp.route("/citac/<string:bib_citac>/")
+@blp.route("/citac/<int:bib_citac>/")
 class CitacList(MethodView):
     @blp.response(200, CitacSchema(many=True))
     def get(self,  bib_citac):

@@ -12,7 +12,7 @@ blp = Blueprint("Negativni_poenis", "negativni_poenis", description="Operations 
 
 
 
-@blp.route("/negativni_poeni/<string:trka_id>/negativni_poeni")
+@blp.route("/negativni_poeni/<int:trka_id>/negativni_poeni")
 #class TrkacsInManifestacija(MethodView):
 class Negativni_poenis(MethodView):
     @blp.response(200, Negativni_poeniSchema(many=True))
@@ -65,7 +65,7 @@ class Negativni_poenisPost(MethodView):
         return Negativni_poeniModel.query.all()
 
 
-@blp.route("/trka/<string:trka_id>/negativni_poeni/<string:negativni_poeni_id>")
+@blp.route("/trka/<int:trka_id>/negativni_poeni/<int:negativni_poeni_id>")
 class LinkTagsToItem(MethodView):
     @blp.response(201, Negativni_poeniSchema)
     def post(self, trka_id, negativni_poeni_id):
@@ -83,7 +83,7 @@ class LinkTagsToItem(MethodView):
         return negativni_poeni
 
 
-@blp.route("/negativni_poeni/<string:negativni_poeni_id>")
+@blp.route("/negativni_poeni/<int:negativni_poeni_id>")
 class Negativni_poenis(MethodView):
     @blp.response(200, Negativni_poeniSchema)
     def get(self, negativni_poeni_id):
@@ -129,7 +129,7 @@ class Negativni_poenis(MethodView):
         return {"message": "Negativni_poeni deleted."}, 200
 
 
-@blp.route("/negativni_poeni/<string:pozicija_negativni>/")
+@blp.route("/negativni_poeni/<int:pozicija_negativni>/")
 class Pozicija_negativniList(MethodView):
     @blp.response(200, Negativni_poeniSchema(many=True))
     def get(self,  pozicija_negativni):

@@ -10,7 +10,7 @@ from schemas import TrkacSchema, TrkacUpdateSchema
 blp = Blueprint("Trkacs", "trkacs", description="Operations on trkacs")
 
 
-@blp.route("/trka/<string:trka_id>/trkac")
+@blp.route("/trka/<int:trka_id>/trkac")
 #class TrkacsInManifestacija(MethodView):
 class Trkacs(MethodView):
     @blp.response(200, TrkacSchema(many=True))
@@ -56,7 +56,7 @@ class TrkacsPost(MethodView):
 
         return trkac
 
-@blp.route("/trka/<string:trka_id>/trkac/<string:trkac_id>")
+@blp.route("/trka/<int:trka_id>/trkac/<int:trkac_id>")
 class LinkTagsToItem(MethodView):
     @blp.response(201, TrkacSchema)
     def post(self, trka_id, trkac_id):
@@ -74,7 +74,7 @@ class LinkTagsToItem(MethodView):
         return trkac
 
 
-@blp.route("/trkac/<string:trkac_id>")
+@blp.route("/trkac/<int:trkac_id>")
 class Trkac(MethodView):
     @blp.response(200, TrkacSchema)
     def get(self, trkac_id):

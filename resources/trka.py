@@ -9,7 +9,7 @@ from schemas import TrkaSchema, TrkaUpdateSchema
 blp = Blueprint("Trkas", "trkas", description="Operations on trkas")
 
 
-@blp.route("/trka/<string:trka_id>")
+@blp.route("/trka/<int:trka_id>")
 class Trka(MethodView):
     @blp.response(200, TrkaSchema)
     def get(self, trka_id):

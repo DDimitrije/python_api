@@ -10,7 +10,7 @@ from schemas import AndroidSchema, AndroidUpdateSchema
 blp = Blueprint("Androids", "androids", description="Operations on androids")
 
 
-@blp.route("/trka/<string:trka_id>/android")
+@blp.route("/trka/<int:trka_id>/android")
 #class TrkacsInManifestacija(MethodView):
 class Androids(MethodView):
     @blp.response(200, AndroidSchema(many=True))
@@ -58,7 +58,7 @@ class AndroidsPost(MethodView):
 
         return android
 
-@blp.route("/trka/<string:trka_id>/android/<string:android_id>")
+@blp.route("/trka/<int:trka_id>/android/<int:android_id>")
 class LinkTagsToItem(MethodView):
     @blp.response(201, AndroidSchema)
     def post(self, trka_id, android_id):
@@ -76,7 +76,7 @@ class LinkTagsToItem(MethodView):
         return android
 
 
-@blp.route("/android/<string:android_id>")
+@blp.route("/android/int:android_id>")
 class Android(MethodView):
     @blp.response(200, AndroidSchema)
     def get(self, android_id):

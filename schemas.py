@@ -146,3 +146,8 @@ class Negativni_poeniUpdateSchema(Schema):
     kazna_sec_negativni = fields.Str()
     storno_negativni = fields.Str()
     trka_id = fields.Int()
+
+class UserSchema(Schema):
+    id = fields.Int(dump_only=True)
+    user = fields.Str(required=True)
+    password = fields.Str(required=True, load_only=True)

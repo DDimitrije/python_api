@@ -10,7 +10,7 @@ from schemas import ManifestacijaSchema
 blp = Blueprint("Manifestacijas", "manifestacijas", description="Operations on manifestacijas")
 
 
-@blp.route("/manifestacija/<string:manifestacija_id>")
+@blp.route("/manifestacija/<int:manifestacija_id>")
 class Manifestacija(MethodView):
     @blp.response(200, ManifestacijaSchema)
     def get(self, manifestacija_id):
